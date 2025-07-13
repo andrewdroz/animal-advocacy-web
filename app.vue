@@ -2,7 +2,7 @@
   <div>
     <v-app>
 
-      <v-form v-model="valid">
+      
         <v-container>
           <v-row>
             <v-col
@@ -22,7 +22,7 @@
             </v-col>
           </v-row>
         </v-container>
-      </v-form>
+      
 
       <v-btn @click="getMobiles">get</v-btn>
       <div>numbers in db: {{ retrievedNumbers }}</div>
