@@ -10,9 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@aws-amplify/backend": "^1.16.1",
     "@mdi/font": "^7.4.47",
     "lowdb": "^7.0.1",
     "nuxt": "^3.17.6",
+    "twilio": "^5.7.3",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
