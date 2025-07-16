@@ -43,10 +43,11 @@
 </template>
 
 <script setup>
-  const secret = require('@aws-amplify/backend');
+  import {secret} from '@aws-amplify/backend';
   const accountSid = secret('twilio-account');
   const authToken = secret('twilio-token');
-  const client = require('twilio')(accountSid, authToken);
+  import twilio from 'twilio';
+  const client = twilio(accountSid, authToken);
 
   import { ref } from 'vue';
 
