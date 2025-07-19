@@ -1,6 +1,6 @@
-import { secret } from "@aws-amplify/backend";
-const accountSid = secret('twilio-account');
-const authToken = secret('twilio-token');
+
+const accountSid = process.env.twilio_account;
+const authToken = process.env.twilio_token;
 import twilio from 'twilio';
 const client = twilio(accountSid, authToken);
 
