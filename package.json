@@ -12,6 +12,7 @@
   "dependencies": {
     "@aws-amplify/backend": "^1.16.1",
     "@mdi/font": "^7.4.47",
+    "aws-amplify": "^6.15.3",
     "lowdb": "^7.0.1",
     "nuxt": "^3.17.6",
     "twilio": "^5.7.3",
