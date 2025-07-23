@@ -31,7 +31,7 @@
           
           <v-row>
             <v-col>
-              <v-btn variant="outlined" @click="{isMobileSubmitted ? verifyOtp() : sendOtp()}">
+              <v-btn variant="outlined" @click="submit">
                 Submit
               </v-btn>
               
@@ -87,6 +87,9 @@
     );
   }
 
+  async function submit() {
+    isMobileSubmitted.value ? verifyOtp() : sendOtp()
+  }
   // async function getMobiles() {
     // retrievedNumbers.value = await useFetch('/api/retrieveMobiles').data.value;
   // }
