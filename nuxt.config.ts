@@ -21,6 +21,10 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    twilioAccount: process.env.NUXT_TWILIO_ACCOUNT || 'MISSING_ACCOUNT',
+    twilioToken: process.env.NUXT_TWILIO_TOKEN || 'MISSING_TOKEN',
+  },
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true }
 })
