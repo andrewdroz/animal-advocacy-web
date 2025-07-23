@@ -24,14 +24,14 @@
                   :error="error"
                   :error-messages="errMessages"
                 ></v-text-field>
-                <v-otp-input v-show="isMobileSubmitted"></v-otp-input>
+                <v-otp-input v-show="isMobileSubmitted" v-model="otpEntered"></v-otp-input>
               </div>
             </v-col>
           </v-row>
           
           <v-row>
             <v-col>
-              <v-btn variant="outlined" @click="sendAuth">
+              <v-btn variant="outlined" @click="isMobileSubmitted ? verifyOtp : sendOtp">
                 Submit
               </v-btn>
               
@@ -51,22 +51,23 @@
   const mobileNumber = ref(null);
   const retrievedNumbers = ref([12345]);
   const isMobileSubmitted = ref(false);
+  const otpEntered = ref(null);
   const error = ref(false)
   const errMessages = ref([])
 
-  async function sendAuth() {
+  async function sendOtp() {
     if (!mobileNumber.value) {
       error.value = true;
       errMessages.value = (["Mobile number is required"])
       return;
     }
     
-    // await $fetch(`/api/sendAuth`,
-    //   {
-    //     method: 'POST',
-    //     body: { number: mobileNumber.value }
-    //   }
-    // );
+    await $fetch(`/api/sendAuth`,
+      {
+        method: 'POST',
+        body: { number: mobileNumber.value }
+      }
+    );
     
     isMobileSubmitted.value = true;
     // await $fetch(`/api/saveMobile`,
@@ -75,6 +76,15 @@
     //     body: { number: mobileNumber.value }
     //   }
     // );
+  }
+
+  async function verifyOtp() {
+    await $fetch(`/api/verifyOtp`,
+      {
+        method: 'POST',
+        body: { otp: otpEntered.value }
+      }
+    );
   }
 
   // async function getMobiles() {
