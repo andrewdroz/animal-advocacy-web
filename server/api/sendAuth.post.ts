@@ -1,6 +1,6 @@
 
-const accountSid = process.env.twilio_account;
-const authToken = process.env.twilio_token;
+const accountSid = import.meta.env.VITE_TWILIO_ACCOUNT;
+const authToken = import.meta.env.VITE_TWILIO_TOKEN;
 import twilio from 'twilio';
 const client = twilio(accountSid, authToken);
 
