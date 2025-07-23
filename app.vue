@@ -31,7 +31,7 @@
           
           <v-row>
             <v-col>
-              <v-btn variant="outlined" @click="isMobileSubmitted ? verifyOtp : sendOtp">
+              <v-btn variant="outlined" @click="{isMobileSubmitted ? verifyOtp() : sendOtp()}">
                 Submit
               </v-btn>
               
