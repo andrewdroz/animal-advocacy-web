@@ -19,19 +19,22 @@
             <v-col>
               <div>
                 <v-text-field
+                  v-show="!isMobileSubmitted"
                   v-model="mobileNumber" label="mobile number"
                   :error="error"
                   :error-messages="errMessages"
                 ></v-text-field>
+                <v-otp-input v-show="isMobileSubmitted"></v-otp-input>
               </div>
             </v-col>
           </v-row>
           
           <v-row>
             <v-col>
-              <v-btn variant="outlined" @click="saveMobile">
+              <v-btn variant="outlined" @click="sendAuth">
                 Submit
               </v-btn>
+              
             </v-col>
           </v-row>
         </v-container>
@@ -47,23 +50,25 @@
 
   const mobileNumber = ref(null);
   const retrievedNumbers = ref([12345]);
+  const isMobileSubmitted = ref(false);
   const error = ref(false)
   const errMessages = ref([])
 
-  async function saveMobile() {
+  async function sendAuth() {
     if (!mobileNumber.value) {
       error.value = true;
       errMessages.value = (["Mobile number is required"])
       return;
     }
     
-    await $fetch(`/api/sendAuth`,
-      {
-        method: 'POST',
-        body: { number: mobileNumber.value }
-      }
-    );
+    // await $fetch(`/api/sendAuth`,
+    //   {
+    //     method: 'POST',
+    //     body: { number: mobileNumber.value }
+    //   }
+    // );
     
+    isMobileSubmitted.value = true;
     // await $fetch(`/api/saveMobile`,
     //   {
     //     method: 'POST',
